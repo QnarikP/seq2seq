@@ -1,0 +1,33 @@
+# config/config.yaml
+
+data:
+  file_path: "../data/rus.txt"      # Path to the dataset file
+  train_split: 0.8               # Fraction of data used for training (80%)
+  validation_split: 0.2          # Fraction of data used for validation (20%)
+  columns:
+    source: 0                    # English sentence column index
+    target: 1                    # Russian sentence column index
+  source_vocab: "../data/src_vocab.json"  # Path to source vocabulary file
+  target_vocab: "../data/tgt_vocab.json"  # Path to target vocabulary file
+
+model:
+  embedding_dim: 256             # Dimension of word embeddings
+  hidden_dim: 1024               # Hidden dimension of the LSTM layers
+  num_layers: 1                  # Number of LSTM layers in both encoder and decoder
+  dropout: 0.5                   # Dropout probability for regularization
+  special_tokens:
+    sos: "<sos>"                 # Start-of-sequence token for Russian sentences
+    eos: "<eos>"                 # End-of-sequence token for Russian sentences
+    pad: "<pad>"                 # Padding token for sequence padding
+
+training:
+  epochs: 20                     # Number of training epochs
+  batch_size: 32                 # Batch size for training and validation
+  learning_rate: 0.001           # Learning rate for the Adam optimizer
+  clip: 1.0                      # Gradient clipping threshold to prevent exploding gradients
+  teacher_forcing_ratio: 0.5     # Ratio for teacher forcing during training
+  loss_function: "CrossEntropyLoss"  # Loss function to use
+
+logging:
+  checkpoint_path: "checkpoints/best_model.pt"  # Path to save the best model based on validation loss
+  print_every: 100              # Print training progress every N batches
