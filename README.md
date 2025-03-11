@@ -42,7 +42,7 @@ project-root/
 
    ```bash
    git clone https://github.com/QnarikP/seq2seq
-   cd your-repo
+   cd seq2seq
    ```
 
 2. **Create a Virtual Environment (Recommended):**
@@ -128,10 +128,3 @@ The training script will:
 - Evaluate on a validation set and save the best model checkpoint.
 
 During training, batch-level and epoch-level progress is printed to the console.
-
-## Inference & Translation
-
-Once the model is trained, you can create a translation script (e.g., `translate.py`) that:
-- Loads the trained model checkpoint.
-- Accepts an English sentence as input.
-- Processes the input and generates a Russian translation token by token until the `<eos>` token is generated or a maximum length is reached.
