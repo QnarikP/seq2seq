@@ -21,7 +21,7 @@ model:
     pad: "<pad>"                 # Padding token for sequence padding
 
 training:
-  epochs: 20                     # Number of training epochs
+  epochs: 25                     # Number of training epochs
   batch_size: 32                 # Batch size for training and validation
   learning_rate: 0.001           # Learning rate for the Adam optimizer
   clip: 1.0                      # Gradient clipping threshold to prevent exploding gradients

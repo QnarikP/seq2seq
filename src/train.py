@@ -46,6 +46,9 @@ EOS_IDX = trg_vocab["<eos>"]
 print("Loading and preprocessing dataset...")
 sources, targets = load_data(config["data"]["file_path"])
 print(f"Dataset loaded with {len(sources)} samples.")
+# Take half of the dataset
+half_size = len(sources) // 2
+sources, targets = sources[:half_size], targets[:half_size]
 
 print("Creating TranslationDataset objects...")
 # Create dataset

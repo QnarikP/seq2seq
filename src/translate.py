@@ -3,7 +3,7 @@ from preprocess import load_vocab
 
 
 # Function to translate input text
-def translate(model, input_text, src_vocab, trg_vocab, device, max_len=50):
+def translate_to_russian(model, input_text, src_vocab, trg_vocab, device, max_len=50):
     model.eval()  # Set the model to evaluation mode
     tokens = input_text.split()  # Tokenize the input sentence
 
@@ -26,12 +26,12 @@ def translate(model, input_text, src_vocab, trg_vocab, device, max_len=50):
 
 
 # Main function to run translation
-def main():
+if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("Using device:", device)
 
     # Load vocabularies
-    src_vocab = load_vocab("../data/src_vocab.json")  # Adjust paths
+    src_vocab = load_vocab("../data/src_vocab.json")
     trg_vocab = load_vocab("../data/tgt_vocab.json")
 
     # Hyperparameters (adjust these based on your model's architecture)
@@ -58,10 +58,6 @@ def main():
     model.eval()  # Set to evaluation mode
 
     # Example input text
-    input_text = "That's great!"
-    translated_text = translate(model, input_text, src_vocab, trg_vocab, device)
+    input_text = "Good morning!"
+    translated_text = translate_to_russian(model, input_text, src_vocab, trg_vocab, device)
     print(f"Translated: {translated_text}")
-
-
-if __name__ == "__main__":
-    main()
